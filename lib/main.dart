@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parchi_beta/screens/chat_screen.dart';
+import 'package:parchi_beta/screens/generateqr_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/registration_screen_doctor.dart';
@@ -8,6 +9,9 @@ import 'screens/registration_screen_hospital.dart';
 import 'screens/registration_screen_lab.dart';
 import 'screens/registration_screen_pharmacy.dart';
 import 'screens/chat_screen.dart';
+import 'screens/scan_screen.dart';
+import 'screens/generateqr_screen.dart';
+import 'screens/form_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,6 +38,9 @@ class MyApp extends StatelessWidget {
         RegistrationScreenPharmacy.id: (context) =>
             RegistrationScreenPharmacy(),
         ChatScreen.id: (context) => ChatScreen(),
+        ScanScreen.id: (context) => ScanScreen(),
+        GenerateScreen.id: (context) => GenerateScreen(),
+        FormScreen.id: (context) => FormScreen(),
       },
     );
   }

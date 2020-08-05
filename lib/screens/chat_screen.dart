@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:parchi_beta/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:parchi_beta/screens/form_screen.dart';
+import 'package:parchi_beta/screens/generateqr_screen.dart';
+import 'package:parchi_beta/screens/scan_screen.dart';
+import 'form_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'chat_screen';
@@ -44,40 +47,78 @@ class _ChatScreenState extends State<ChatScreen> {
                 //Implement logout functionality
               }),
         ],
-        title: Text('⚡️Profile'),
-        backgroundColor: Colors.lightBlueAccent,
+        title: Center(child: Text('⚡️Profile')),
+        backgroundColor: Colors.deepOrangeAccent,
       ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              decoration: kMessageContainerDecoration,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      onChanged: (value) {
-                        //Do something with the user input.
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Material(
+                    color: Colors.deepOrangeAccent,
+                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    elevation: 5.0,
+                    child: MaterialButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, ScanScreen.id);
                       },
-                      decoration: kMessageTextFieldDecoration,
+                      minWidth: 200.0,
+                      height: 42.0,
+                      child: Text(
+                        'Scan QR Code',
+                      ),
                     ),
                   ),
-                  FlatButton(
-                    onPressed: () {
-                      //Implement send functionality.
-                    },
-                    child: Text(
-                      'Send',
-                      style: kSendButtonTextStyle,
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          ],
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  child: Material(
+                    color: Colors.deepOrangeAccent,
+                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    elevation: 5.0,
+                    child: MaterialButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, GenerateScreen.id);
+                      },
+                      minWidth: 200.0,
+                      height: 42.0,
+                      child: Text(
+                        'Show QR Code',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  child: Material(
+                    color: Colors.deepOrangeAccent,
+                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    elevation: 5.0,
+                    child: MaterialButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, FormScreen.id);
+                      },
+                      minWidth: 200.0,
+                      height: 42.0,
+                      child: Text(
+                        'Profile Data',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
