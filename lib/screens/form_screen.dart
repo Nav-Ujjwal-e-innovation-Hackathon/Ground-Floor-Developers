@@ -28,7 +28,7 @@ class _MyHomePageState extends State<FormScreen> {
               ),
               Center(
                 child: Container(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(9.0),
                     child: new RaisedButton(
                       child: const Text('Submit'),
                       onPressed: null,

@@ -59,7 +59,7 @@ class _ChatScreenState extends State<ChatScreen> {
             children: <Widget>[
               Center(
                 child: Padding(
-                  padding: EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(15.0),
                   child: Material(
                     color: Colors.deepOrangeAccent,
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),

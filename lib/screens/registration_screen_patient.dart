@@ -134,6 +134,9 @@ class _RegistrationScreenState extends State<RegistrationScreenPatient> {
                                   email: email, password: password);
                           if (newUser != null) {
                             Navigator.pushNamed(context, FormScreen.id);
+                          } else {
+                            Navigator.pushNamed(
+                                context, RegistrationScreenPatient.id);
                           }
                           setState(() {
                             showSpinner = false;

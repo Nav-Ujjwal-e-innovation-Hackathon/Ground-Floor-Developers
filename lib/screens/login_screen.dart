@@ -159,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Flexible(
                 fit: FlexFit.loose,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  padding: EdgeInsets.symmetric(vertical: 15.0),
                   child: Material(
                     color: Colors.deepOrangeAccent,
                     borderRadius: BorderRadius.circular(30.0),
