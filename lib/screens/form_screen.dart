@@ -11,7 +11,11 @@ class FormScreen extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<FormScreen> {
-  String typo;
+  String name;
+  String age;
+  String sex;
+  String allergy;
+  String disease;
   final _formKey = GlobalKey<FormState>();
   final _firestore = Firestore.instance;
 
@@ -24,36 +28,91 @@ class _MyHomePageState extends State<FormScreen> {
       ),
       body: Form(
           key: _formKey,
-          child: Column(children: <Widget>[
-            TextFormField(
-              decoration: InputDecoration(hintText: 'Full Name'),
+          child: Center(
+            child: Column(children: <Widget>[
+              TextFormField(
+                decoration: InputDecoration(hintText: 'Full Name'),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  name = value;
+                },
+              ),
+              TextFormField(
+                decoration: InputDecoration(hintText: 'Age'),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  age = value;
+                },
+              ),
+              TextFormField(
+                decoration: InputDecoration(hintText: 'Sex'),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  sex = value;
+                },
+              ),
+              TextFormField(
+                decoration: InputDecoration(hintText: 'Disease'),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  disease = value;
+                },
+              ),
+              TextFormField(
+                decoration: InputDecoration(hintText: 'Allergies'),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+                onChanged: (value) {
+                  allergy = value;
+                },
+              ),
+              RaisedButton(
+                onPressed: () {
+                  // Validate returns true if the form is valid, otherwise false.
+                  if (_formKey.currentState.validate()) {
+                    _firestore.collection('medical_data').add(
+                      {
+                        'name': name,
+                        'user': emailloggedin,
+                        'age': age,
+                        'sex': sex,
+                        'Allergies': allergy,
+                        'Disease': disease
+                      },
+                    );
+                    Navigator.pushNamed(context, ChatScreen.id);
+                  }
+                },
+                child: Text('Submit'),
+              ),
 
-              // The validator receives the text that the user has entered.
-              validator: (value) {
-                if (value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                typo = value;
-              },
-            ),
-            RaisedButton(
-              onPressed: () {
-                // Validate returns true if the form is valid, otherwise false.
-                if (_formKey.currentState.validate()) {
-                  _firestore.collection('check').add(
-                    {'text': typo, 'sender': emailloggedin},
-                  );
-                  Navigator.pushNamed(context, ChatScreen.id);
-                }
-              },
-              child: Text('Submit'),
-            ),
-
-            // Add TextFormFields and RaisedButton here.
-          ])),
+              // Add TextFormFields and RaisedButton here.
+            ]),
+          )),
     );
   }
 }
