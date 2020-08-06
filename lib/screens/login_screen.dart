@@ -63,6 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 decoration: InputDecoration(
                   hintText: 'Enter your email',
+                  hintStyle: TextStyle(fontSize: 20.0, color: Colors.black),
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
@@ -97,6 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 decoration: InputDecoration(
                   hintText: 'Enter your password.',
+                  hintStyle: TextStyle(fontSize: 20.0, color: Colors.black),
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(

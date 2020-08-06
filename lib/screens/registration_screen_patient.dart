@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:parchi_beta/screens/form_screen.dart';
-import 'chat_screen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+
+String emailloggedin;
 
 class RegistrationScreenPatient extends StatefulWidget {
   static const String id = 'registration_screen_patient';
@@ -16,6 +17,20 @@ class _RegistrationScreenState extends State<RegistrationScreenPatient> {
   String email;
   String password;
   bool showSpinner = false;
+  FirebaseUser loggedInUser;
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        emailloggedin = loggedInUser.email;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -58,6 +73,7 @@ class _RegistrationScreenState extends State<RegistrationScreenPatient> {
                 },
                 decoration: InputDecoration(
                   hintText: 'Enter your email',
+                  hintStyle: TextStyle(fontSize: 20.0, color: Colors.black),
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
@@ -92,6 +108,7 @@ class _RegistrationScreenState extends State<RegistrationScreenPatient> {
                 },
                 decoration: InputDecoration(
                   hintText: 'Enter your password',
+                  hintStyle: TextStyle(fontSize: 20.0, color: Colors.black),
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   border: OutlineInputBorder(
@@ -133,6 +150,7 @@ class _RegistrationScreenState extends State<RegistrationScreenPatient> {
                               await _auth.createUserWithEmailAndPassword(
                                   email: email, password: password);
                           if (newUser != null) {
+                            getCurrentUser();
                             Navigator.pushNamed(context, FormScreen.id);
                           } else {
                             Navigator.pushNamed(

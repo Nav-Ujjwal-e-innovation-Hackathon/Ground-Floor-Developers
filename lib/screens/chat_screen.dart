@@ -4,6 +4,11 @@ import 'package:parchi_beta/screens/form_screen.dart';
 import 'package:parchi_beta/screens/generateqr_screen.dart';
 import 'package:parchi_beta/screens/scan_screen.dart';
 import 'form_screen.dart';
+import 'login_screen.dart';
+import 'registration_screen_patient.dart';
+import 'formshow_screen.dart';
+
+String finalemail;
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'chat_screen';
@@ -14,6 +19,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
+  String chatscreenemail;
 
   @override
   void initState() {
@@ -26,7 +32,7 @@ class _ChatScreenState extends State<ChatScreen> {
       final user = await _auth.currentUser();
       if (user != null) {
         loggedInUser = user;
-        print(loggedInUser.email);
+        finalemail = loggedInUser.email;
       }
     } catch (e) {
       print(e);
@@ -86,6 +92,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     elevation: 5.0,
                     child: MaterialButton(
                       onPressed: () {
+                        getCurrentUser();
                         Navigator.pushNamed(context, GenerateScreen.id);
                       },
                       minWidth: 200.0,
@@ -106,7 +113,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     elevation: 5.0,
                     child: MaterialButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, FormScreen.id);
+                        Navigator.pushNamed(context, FormShowScreen.id);
                       },
                       minWidth: 200.0,
                       height: 42.0,

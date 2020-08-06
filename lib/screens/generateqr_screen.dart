@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parchi_beta/screens/chat_screen.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
@@ -68,58 +69,12 @@ class GenerateScreenState extends State<GenerateScreen> {
       color: Colors.deepOrangeAccent,
       child: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(
-              top: _topSectionTopPadding,
-              left: 20.0,
-              right: 10.0,
-              bottom: _topSectionBottomPadding,
-            ),
-            child: Container(
-              height: _topSectionHeight,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                      controller: _textController,
-                      decoration: InputDecoration(
-                          hintText: "Enter Unique Id",
-                          errorText: _inputErrorText,
-                          fillColor: Colors.black),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 9.0),
-                    child: FlatButton(
-                      child: Text(
-                        "SUBMIT",
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          _dataString = _textController.text;
-                          _inputErrorText = null;
-                        });
-                      },
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
           Expanded(
             child: Center(
               child: RepaintBoundary(
                 key: globalKey,
                 child: QrImage(
-                  data: _dataString,
+                  data: finalemail,
                   size: 0.5 * bodyHeight,
                   errorStateBuilder: (cxt, err) {
                     return Container(

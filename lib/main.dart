@@ -12,6 +12,7 @@ import 'screens/chat_screen.dart';
 import 'screens/scan_screen.dart';
 import 'screens/generateqr_screen.dart';
 import 'screens/form_screen.dart';
+import 'screens/formshow_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         ScanScreen.id: (context) => ScanScreen(),
         GenerateScreen.id: (context) => GenerateScreen(),
         FormScreen.id: (context) => FormScreen(),
+        FormShowScreen.id: (context) => FormShowScreen(),
       },
     );
   }
